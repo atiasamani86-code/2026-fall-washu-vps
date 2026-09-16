@@ -6,82 +6,139 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ichiro Ramen Menu</title>
   <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    background-color: #f3ead7;
-    color: #24352b;
-    font-family: "Trebuchet MS", Arial, sans-serif;
-    max-width: 1100px;
-    margin: 0 auto;
+    margin: 0;
     padding: 40px;
+    background-color: #101015;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
     line-height: 1.5;
   }
 
+  header,
+  body > section,
+  main {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   header {
-    background-color: #ff6b6b;
-    color: #ffffff;
-    text-align: center;
-    padding: 50px 20px;
+    padding: 45px 0;
     margin-bottom: 30px;
+    border-bottom: 5px solid #00e5c3;
   }
 
   h1 {
-    font-size: 68px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
     margin: 0;
+    color: #ff3d81;
+    font-size: 72px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
   }
 
   header p {
+    margin: 8px 0;
+    color: #d6d6df;
     font-size: 18px;
   }
 
-  main {
-    columns: 2 350px;
-    column-gap: 25px;
-  }
-
-  section {
-    background-color: #ffffff;
-    border: 2px solid #24352b;
-    padding: 20px;
-    margin: 0 0 25px;
-    break-inside: avoid;
+  body > section {
+    padding: 25px;
+    margin-bottom: 30px;
+    background-color: #1b1b25;
+    border: 1px solid #3b3b4d;
   }
 
   h2 {
-    color: #087f5b;
-    font-size: 32px;
+    margin-top: 0;
+    color: #00e5c3;
+    font-size: 35px;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    border-bottom: 4px solid #ffd43b;
-    padding-bottom: 8px;
   }
 
-  h3, h4 {
-    color: #e8590c;
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  main > h2 {
+    grid-column: 1 / -1;
+    padding: 18px;
+    background-color: #ff3d81;
+    color: #101015;
+    text-align: center;
+  }
+
+  main section {
+    padding: 24px;
+    background-color: #1b1b25;
+    border: 1px solid #3b3b4d;
+    border-top: 5px solid #00e5c3;
+    transition: transform 0.3s;
+  }
+
+  main section:nth-of-type(even) {
+    border-top-color: #ff3d81;
+  }
+
+  main section:hover {
+    transform: translateY(-6px);
+  }
+
+  h3 {
+    margin-top: 0;
+    color: #ffffff;
+    font-size: 24px;
+    text-transform: uppercase;
   }
 
   ul {
-    list-style-type: square;
-    padding-left: 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   li {
-    padding: 5px 0;
+    padding: 9px 0;
+    border-bottom: 1px solid #3b3b4d;
   }
 
   span {
-    color: #087f5b;
+    float: right;
+    margin-left: 15px;
+    color: #ffcf4a;
     font-weight: bold;
+  }
+
+  em {
+    color: #b6b6c5;
   }
 
   a {
-    color: #087f5b;
-    font-weight: bold;
+    color: #00e5c3;
   }
 
-  a:hover {
-    color: #ffffff;
-    background-color: #087f5b;
+  @media (max-width: 750px) {
+    body {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 43px;
+      letter-spacing: 3px;
+    }
+
+    main {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
@@ -93,7 +150,6 @@
     <p><strong>Healthy & Delicious Asian Food</strong></p>
     <p><em>Fusion Cuisine, Dine-In & Take-Out</em></p>
   </header>
-
 
 
   <section>
@@ -116,7 +172,6 @@
       <li>Sunday: 11:00 AM–9:00 PM</li>
     </ul>
   </section>
-
 
   <main>
     <h2>Menu</h2>
