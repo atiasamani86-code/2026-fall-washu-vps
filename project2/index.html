@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Food Archive — Project 02</title>
+
+<style>
+:root {
+  --walnut: #342117;
+  --dark: #1b110d;
+  --brass: #c3a16a;
+  --cream: #f0e4ce;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 20%, #493226, #160f0c 85%);
+  color: var(--cream);
+  font-family: Georgia, serif;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 45px 24px 90px;
+}
+
+.back {
+  color: var(--brass);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+header {
+  text-align: center;
+  margin: 65px 0 55px;
+}
+
+.eyebrow {
+  color: var(--brass);
+  font: 11px Arial, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(45px, 7vw, 82px);
+  font-weight: normal;
+  margin: 18px 0;
+}
+
+.subtitle {
+  color: #d4bea0;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.intro {
+  max-width: 600px;
+  margin: 25px auto;
+  color: #c9bba9;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.cabinet {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+  padding: 22px;
+  background:
+    repeating-linear-gradient(
+      93deg,
+      transparent 0px,
+      #ffffff08 3px,
+      transparent 7px,
+      #00000018 17px
+    ),
+    linear-gradient(135deg, #503525, #28180f);
+  border: 12px solid #24150e;
+  outline: 2px solid #80603e;
+  box-shadow:
+    0 35px 70px #0009,
+    inset 0 0 25px #000a;
+}
+
+.compartment {
+  position: relative;
+  height: 350px;
+  perspective: 1000px;
+  background: #130c09;
+  border: 5px solid #24150e;
+  overflow: hidden;
+}
+
+.inside {
+  position: absolute;
+  inset: 0;
+  padding: 28px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(#59402b, #1a100b);
+}
+
+.inside span {
+  font: 11px Arial, sans-serif;
+  letter-spacing: 2px;
+  color: var(--brass);
+}
+
+.inside h2 {
+  font-weight: normal;
+  font-size: 25px;
+}
+
+.inside p {
+  font-size: 13px;
+  color: #d1c0a8;
+}
+
+.door {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-origin: left center;
+  transition: transform .65s ease;
+  background:
+    repeating-linear-gradient(
+      91deg,
+      #ffffff08 0px,
+      transparent 4px,
+      #00000018 12px,
+      transparent 20px
+    ),
+    linear-gradient(110deg, #65442d, #382316 60%, #24150f);
+  border: 8px ridge #6b492f;
+  box-shadow: inset 0 0 35px #0009;
+}
+
+.door::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 3px solid #765236;
+  box-shadow: inset 0 0 0 3px #2b1b12;
+  pointer-events: none;
+}
+
+.door-number {
+  color: #e5d1aa;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.door-title {
+  margin-top: 25px;
+  font-size: 21px;
+  color: var(--cream);
+}
+
+.handle {
+  position: absolute;
+  right: 17px;
+  top: 46%;
+  width: 12px;
+  height: 54px;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg, #806039, #f0d79b, #977443
+  );
+  box-shadow: 2px 3px 8px #000a;
+}
+
+.compartment:hover .door,
+.compartment:focus-within .door {
+  transform: rotateY(-72deg);
+}
+
+.open-link {
+  margin-top: 18px;
+  color: #e8c995;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.open-link:hover {
+  color: white;
+}
+
+.instructions {
+  text-align: center;
+  margin-top: 30px;
+  color: #bfa98c;
+  font-size: 13px;
+  font-style: italic;
+}
+
+footer {
+  text-align: center;
+  margin-top: 70px;
+  font-size: 12px;
+  color: #a9957a;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+  .cabinet {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: auto;
+  }
+
+  .compartment {
+    height: 260px;
+  }
+
+  header {
+    margin-top: 45px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .door { transition: none; }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+<a class="back" href="../index.html">
+  ← Back to Class Homepage
+</a>
+
+<header>
+  <p class="eyebrow">
+    Visual Principles for the Screen · Project 02
+  </p>
+
+  <h1>The Food Archive</h1>
+
+  <p class="subtitle">
+    Every Shelf Holds a Story
+  </p>
+
+  <p class="intro">
+    A digital cabinet of food, memory, history,
+    and culture. Open each door to explore
+    the final website, its design process,
+    and the visual archive behind it.
+  </p>
+</header>
+
+<div class="cabinet">
+
+  <!-- DOOR 01: STARSTAR -->
+  <div class="compartment">
+    <div class="inside">
+      <span>01 / FINAL PROJECT</span>
+      <h2>The Website</h2>
+      <p>Enter the interactive food cabinet.</p>
+      <a class="open-link"
+         href="https://between-three-worlds.starstar.website"
+         target="_blank"
+         rel="noopener noreferrer">
+        Explore Starstar ↗
+      </a>
+    </div>
+
+    <div class="door">
+      <span class="door-number">01</span>
+      <span class="door-title">THE WEBSITE</span>
+      <span class="handle"></span>
+    </div>
+  </div>
+
+  <!-- DOOR 02: FIGMA -->
+  <div class="compartment">
+    <div class="inside">
+      <span>02 / DESIGN PROCESS</span>
+      <h2>Figma Sketches</h2>
+      <p>Discover the early cabinet explorations.</p>
+      <a class="open-link"
+         href="https://www.figma.com/design/iIxAK1Di3I50N2ZYYlTf6Q/Project-2-Website-Metaphor-Explorations?node-id=87-6"
+         target="_blank"
+         rel="noopener noreferrer">
+        View Figma ↗
+      </a>
+    </div>
+
+    <div class="door">
+      <span class="door-number">02</span>
+      <span class="door-title">THE SKETCHES</span>
+      <span class="handle"></span>
+    </div>
+  </div>
+
+  <!-- DOOR 03: ARE.NA -->
+  <div class="compartment">
+    <div class="inside">
+      <span>03 / VISUAL ARCHIVE</span>
+      <h2>Are.na Collection</h2>
+      <p>Explore the objects and references.</p>
+      <a class="open-link"
+         href="https://www.are.na/atia-samani/the-food-archive"
+         target="_blank"
+         rel="noopener noreferrer">
+        Explore Are.na ↗
+      </a>
+    </div>
+
+    <div class="door">
+      <span class="door-number">03</span>
+      <span class="door-title">THE ARCHIVE</span>
+      <span class="handle"></span>
+    </div>
+  </div>
+
+</div>
+
+<p class="instructions">
+  Hover over a cabinet door to discover what is inside.
+</p>
+
+<footer>
+  THE FOOD ARCHIVE · 2026
+  <p>Atia Samani — Washington University in St. Louis</p>
+</footer>
+
+</main>
+</body>
+</html>
